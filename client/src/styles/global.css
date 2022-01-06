@@ -47,4 +47,12 @@
 @import url('./header.css');
 /* AVATAR */
 @import url('./avatar.css');
-  
+  /* INFO */
+@import url('./profile.css');
+/* HOME */
+@import url('./home.css');
+/* STATUS MODAL */
+@import url('./statusModal.css');
+
+/* COMMENTS */
+@import url('./comments.css');

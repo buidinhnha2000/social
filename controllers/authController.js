@@ -17,7 +17,7 @@ const authController = {
       const newUser = new Users({
         fullname, username: newUserName, email, password: passwordHash, gender
       });
-      console.log(newUser);
+      //console.log(newUser);
 
       const access_token = createAccessToken({ id: newUser._id });
       const refresh_token = createRefreshToken({ id: newUser._id });
@@ -39,7 +39,7 @@ const authController = {
         }
       });
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+      return res.status(500).json({msg: err.message})
     }
   },
   login: async (req, res) => {
@@ -71,8 +71,9 @@ const authController = {
           password: ''
         }
       });
+      console.log(user)
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+      return res.status(500).json({msg: err.message})
     }
   },
   logout: async (req, res) => {
@@ -80,7 +81,7 @@ const authController = {
       res.clearCookie('refreshtoken', { path: '/api/refresh_token'})
       return res.json({msg: 'Logged out!'})
   } catch (err) {
-      return res.status(500).json({msg: err.message})
+    return res.status(500).json({msg: err.message})
   }
   },
   generateAccessToken: async (req, res) => {
@@ -104,7 +105,7 @@ const authController = {
       });
      
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+      res.status(500).json({msg: err.message})
     }
   },
 }

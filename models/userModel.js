@@ -33,9 +33,9 @@ const userSchema = new mongoose.Schema({
   gender: { type: String, default: 'male' },
   mobile: { type: String, default: '' },
   address: { type: String, default: '' },
-  role: {
+  story: {
     type: String,
-    default: 'user',
+    default: '',
     maxlength: 200
   },
   website: { type: String, default: '' },

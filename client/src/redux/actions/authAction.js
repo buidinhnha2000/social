@@ -6,7 +6,7 @@ export const login = (data) => async (dispatch) => {
     try {
        dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true }});
        const res = await postDataAPI('login', data);
-       console.log(res);
+       console.log("login success ",res);
        dispatch({
            type: GLOBALTYPES.AUTH,
            payload: {
@@ -37,7 +37,7 @@ export const refreshToken = () => async (dispatch) => {
         dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
         try {
             const res = await postDataAPI('refresh_token');
-            //console.log(res);
+            // console.log("refresh_token ",res);
             dispatch({
                 type: GLOBALTYPES.AUTH,
                 payload: {

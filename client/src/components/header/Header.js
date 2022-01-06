@@ -10,7 +10,7 @@ const Header = () => {
     <div className="header bg-light">
       <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between align-middle">
       <Link to="/" className="logo">
-        <h1 className="navbar-brand text-uppercase p-0 m-0">Hy nèe</h1>
+        <h1 className="navbar-brand p-0 m-0" onClick={() => window.scrollTo({top: 0})}>dthuy</h1>
       </Link>
       <Search />
       <Menu />
@@ -22,3 +22,4 @@ const Header = () => {
 }
 
 export default Header;
+
