@@ -32,7 +32,6 @@ const userController = {
        await Users.findOneAndUpdate({_id: req.user._id}, {
         avatar, fullname, mobile, address, story, website
        })
-
        res.json({msg: "Update Success!"});
         } catch (err) {
             return res.status(500).json({msg: err.message})

@@ -1,4 +1,4 @@
-import { GLOBALTYPES } from "./globalTypes";
+  import { GLOBALTYPES } from "./globalTypes";
 import { postDataAPI } from "../../untils/fetchData";
 import validation from "../../untils/validation";
 

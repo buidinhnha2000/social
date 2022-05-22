@@ -2,7 +2,7 @@ import { GLOBALTYPES } from "./globalTypes"
 import { imageUpload } from '../../untils/imageUpload';
 import { postDataAPI, getDataAPI, patchDataAPI } from "../../untils/fetchData";
 
-export const POST_TYPE = {
+export const POST_TYPES = {
     CREATE_POST: "CREATE_POST",
     LOADING_POST: "LOADING_POST",
     GET_POST: "GET_POST",
@@ -20,7 +20,7 @@ export const createPost = ({ content, images, auth }) => async (dispatch) => {
        const res = await postDataAPI('posts', {content, images: media}, auth.token)
       
        dispatch({
-            type: POST_TYPE.CREATE_POST, 
+            type: POST_TYPES.CREATE_POST, 
             payload: {...res.data.newPost, user: auth.user} 
         })
        
@@ -34,13 +34,13 @@ export const createPost = ({ content, images, auth }) => async (dispatch) => {
 }
 export const getPosts = (token) => async (dispatch) =>  {
     try {
-        dispatch({ type: POST_TYPE.LOADING_POST, payload: true })
+        dispatch({ type: POST_TYPES.LOADING_POST, payload: true })
         
         const res = await getDataAPI('posts', token);
-
-        dispatch({ type: POST_TYPE.GET_POST, payload: res.data })
+        console.log(res);
+        dispatch({ type: POST_TYPES.GET_POST, payload: res.data })
         
-        dispatch({ type: POST_TYPE.LOADING_POST, payload: false })
+        dispatch({ type: POST_TYPES.LOADING_POST, payload: false })
 
     } catch (err) {
         dispatch({
@@ -68,7 +68,7 @@ export const updatePost = ({content, images, auth, status}) => async (dispatch) 
         console.log(res);
 
         dispatch({ type: GLOBALTYPES.ALERT, payload: {success: res.data.msg} })
-        dispatch({ type: POST_TYPE.UPDATE_POST, payload: res.data.newPost })
+        dispatch({ type: POST_TYPES.UPDATE_POST, payload: res.data.newPost })
     } catch (err) {
         dispatch({
             type: GLOBALTYPES.ALERT,
@@ -80,7 +80,7 @@ export const likePost = ({post, auth}) => async (dispatch) => {
     console.log(post)
     const newPost = {...post, likes: [...post.likes, auth.user]}
     console.log(newPost)
-    dispatch({ type: POST_TYPE.UPDATE_POST, payload: newPost })
+    dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
 
     try {
         await patchDataAPI(`post/${post._id}/like`, null, auth.token)

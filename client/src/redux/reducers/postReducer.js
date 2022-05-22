@@ -1,5 +1,5 @@
 import { EditData } from "../actions/globalTypes";
-import { POST_TYPE } from "../actions/postAction";
+import { POST_TYPES } from "../actions/postAction";
 
 const initialState = {
     loading: false,
@@ -10,24 +10,24 @@ const initialState = {
 
 const postReducer = (state = initialState, action) => {
     switch (action.type) {
-        case POST_TYPE.CREATE_POST:
+        case POST_TYPES.CREATE_POST:
             return {
                 ...state,
                 posts: [action.payload, ...state.posts]
             };
-        case POST_TYPE.LOADING_POST:
+        case POST_TYPES.LOADING_POST:
             return {
                 ...state,
                 loading: action.payload
             };
-        case POST_TYPE.GET_POST:
+        case POST_TYPES.GET_POST:
             // console.log(action.payload)
             return {
                 ...state,
                 posts: action.payload.posts,
                 result: action.payload.result
             }
-        case POST_TYPE.UPDATE_POST:
+        case POST_TYPES.UPDATE_POST:
             return {
                 ...state,
                 posts: EditData(state.posts, action.payload._id, action.payload)

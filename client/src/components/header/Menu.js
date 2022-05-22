@@ -15,6 +15,7 @@ const Menu = () => {
       ]
     
       const { auth, theme } = useSelector(state => state);
+    console.log({auth});
       const dispatch = useDispatch();
       const { pathname } = useLocation();
     

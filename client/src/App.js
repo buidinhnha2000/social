@@ -16,6 +16,7 @@ import { getPosts } from './redux/actions/postAction';
 
 function App() {
   const { auth, status } = useSelector(state => state);
+  // console.log(auth);
   const dispatch = useDispatch();
   
 
@@ -28,13 +29,14 @@ function App() {
   }, [dispatch, auth.token])
   return (
     <Router>
-      <Alert/>
+      <Alert />
       <input type="checkbox" id="theme" />
       <div className="App">
         <div className="main">
           { auth.token && <Header /> }
           { status && <StatusModal /> }
         <Route exact path="/" component={auth.token ? Home : Login}></Route>
+        {/*  <Route exact path="/" component={Home}></Route>*/}
         <Route exact path="/register" component={Register}></Route>
 
           <PrivateRouter exact path="/:page" component={PageRender}></PrivateRouter>

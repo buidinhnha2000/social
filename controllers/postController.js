@@ -65,6 +65,7 @@ const postController = {
     },
     likePost: async (req, res) => {
         try {
+
            await Posts.findOneAndUpdate({_id: req.params.id}, {
                $push: {likes: req.user._id}
            }, {new: true})
@@ -75,6 +76,7 @@ const postController = {
             return res.status(500).json({msg: err.message})  
         }
     },
+    
     
 }
 module.exports = postController;

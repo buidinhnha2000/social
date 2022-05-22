@@ -8,7 +8,7 @@ import CardHeader from './home/postCard/CardHeader';
 
 const PostCard = ({ post }) => {
     return (
-        <div key={post._id} className="card my-3">
+        <div className="card my-3">
         <CardHeader post={post} />
         <CardBody post={post} />
         <CardFooter post={post} />
